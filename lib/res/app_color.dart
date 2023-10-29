@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 
 class AppColor  extends BaseProvider{
   static Color defaultMainColor = Color(0xff0C274F);
-  static Color defaultTextColor = Colors.black;
-  static Color defaultBgColor =  Colors.white;
+  static Color defaultTextColor = Color(0xff000000);
+  static Color defaultBgColor =  Color(0xffffffff);
    static Color rdefaultMainColor = Color(0xff0C274F);
-  static Color rdefaultTextColor = Colors.black;
-  static Color rdefaultBgColor =  Colors.white;
+  static Color rdefaultTextColor = Color(0xff000000);
+  static Color rdefaultBgColor =  Color(0xffffffff);
  static  getPrimarySwatchColor () {
    return MaterialColor(
       defaultMainColor.value,

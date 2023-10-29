@@ -1,6 +1,7 @@
 
 import 'package:blog_assesment/AppSettings.dart';
 import 'package:blog_assesment/PersonalBlogApp.dart';
+import 'package:blog_assesment/data_layer/Storage/storage_helper.dart';
 import 'package:blog_assesment/res/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
@@ -30,32 +31,38 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ListTile(
-              visualDensity: VisualDensity.comfortable,
-              leading: Icon(
-                Icons.color_lens_outlined,
-                color: theme.primaryColor,
-              ),
-              title: const Text(
-                "Theme Color",
-                style: TextStyle(fontWeight: FontWeight.w600),
-              ),
-              subtitle: const Text(
-                "Will change main theme color of app.",
-                style: TextStyle(fontWeight: FontWeight.w400),
-              ),
-              trailing:
-                  GestureDetector(
-                     onTap: (){
-                       changeColorDialog((changedColor){
-                         AppColor.defaultMainColor = changedColor ??AppColor.defaultMainColor;
-                         runApp(PersonalBlogApp());
+            // ListTile(
+            // key:  UniqueKey(),
 
-                      });
-                    },
-                    child: CircleAvatar(backgroundColor: AppColor.defaultMainColor)),
-            ),
+            //   visualDensity: VisualDensity.comfortable,
+            //   leading: Icon(
+            //     Icons.color_lens_outlined,
+            //     color: theme.primaryColor,
+            //   ),
+            //   title: const Text(
+            //     "Theme Color",
+            //     style: TextStyle(fontWeight: FontWeight.w600),
+            //   ),
+            //   subtitle: const Text(
+            //     "Will change main theme color of app.",
+            //     style: TextStyle(fontWeight: FontWeight.w400),
+            //   ),
+            //   trailing:
+            //       GestureDetector(
+            //          onTap: (){
+            //         //    changeColorDialog((changedColor) async{
+            //         //      AppColor.defaultMainColor = changedColor ??AppColor.defaultMainColor;
+
+            //         //      runApp(PersonalBlogApp());
+            //         //     //  await StorageHelper().setDefaultMainColor();
+
+            //           // });
+            //         },
+            //         child: CircleAvatar(backgroundColor: AppColor.defaultMainColor)),
+            // ),
             ListTile(
+            key:  UniqueKey(),
+
               visualDensity: VisualDensity.comfortable,
               leading: Icon(
                 Icons.text_fields_rounded,
@@ -72,16 +79,23 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
               trailing:
                   GestureDetector(
                     onTap: (){
-                      changeColorDialog((changedColor){
+    changeColorDialog((changedColor) async{
                          AppColor.defaultTextColor = changedColor ??AppColor.defaultTextColor;
+
                          runApp(PersonalBlogApp());
-                         
+                        //  await StorageHelper().setDefaultMainColor();
+                      //  changeColorDialog((changedColor) async{
+                      //    AppColor.defaultTextColor = changedColor ??AppColor.defaultTextColor;
+
+                      //    runApp(PersonalBlogApp());
+                      //   //  await StorageHelper().setDefaultMainColor();
 
                       });
                     },
                     child: CircleAvatar(backgroundColor: AppColor.defaultTextColor)),
             ),
            ListTile(
+            key:  UniqueKey(),
               visualDensity: VisualDensity.comfortable,
               leading: Icon(
                 Icons.square_outlined,
@@ -98,9 +112,11 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
               trailing:
                   GestureDetector(
                     onTap: (){
-                      changeColorDialog((changedColor){
+                       changeColorDialog((changedColor) async{
                          AppColor.defaultBgColor = changedColor ??AppColor.defaultBgColor;
+
                          runApp(PersonalBlogApp());
+                        //  await StorageHelper().setDefaultMainColor();
 
                       });
                     },
@@ -120,6 +136,7 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
+                          key: UniqueKey(),
                           title: Text('Pick a color'),
                           content: SingleChildScrollView(
                             child: BlockPicker(
@@ -132,8 +149,9 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
                           actions: <Widget>[
                             TextButton(
                               child: Text('Got it'),
-                              onPressed: () {
-                                Navigator.of(context).pop();                                onColorChanged(newColor);
+                              onPressed: () async{
+                                Navigator.of(context).pop();                        
+                                await onColorChanged(newColor);
                               },
                             ),
                           ],

@@ -7,6 +7,18 @@ import '../../Utils/Helper/internet_helper.dart';
 import '../../data_layer/Storage/storage_helper.dart';
 
 class BaseProvider extends ChangeNotifier {
+// BaseProvider(){
+//   getInitialData();
+// }
+
+//  getInitialData() async
+//  {
+// await  StorageHelper().getDefaultBgColor();
+//  await StorageHelper().getDefaultMainColor();
+//  await StorageHelper().getDefaultTextColor();
+// await  StorageHelper().getDefaultBlogLayout();
+//  }
+
 
   bool? checkNetwork;
   /* Function to check internet connection */

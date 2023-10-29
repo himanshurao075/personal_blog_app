@@ -1,5 +1,6 @@
 import 'package:blog_assesment/AppSettings.dart';
 import 'package:blog_assesment/data_layer/models/user_modal.dart';
+import 'package:blog_assesment/res/app_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -69,6 +70,60 @@ class StorageHelper {
     );
     AppSettings.userModal = UserModal.fromJson((temp ?? {}));
   }
+
+  // setDefaultMainColor() async {
+  //   await GetStorage()
+  //       .write('defaultMainColor', AppColor.defaultMainColor.value);
+  //   await getDefaultMainColor();
+  // }
+
+  // setDefaultTextColor() async {
+  //   await GetStorage()
+  //       .write('defaultTextColor', AppColor.defaultTextColor.value);
+  //   await getDefaultTextColor();
+  // }
+
+  // setDefaultBgColor() async {
+  //   await GetStorage().write('defaultBgColor', AppColor.defaultBgColor.value);
+  //   await getDefaultBgColor();
+  // }
+
+  // setDefaultBlogLayout() async {
+  //   await GetStorage()
+  //       .write('defaultBlogLayout', AppSettings.blogLayoutIsListView);
+  //   await getDefaultMainColor();
+  // }
+
+  // getDefaultMainColor() async {
+  //   final temp = GetStorage().read(
+  //     'defaultMainColor',
+  //   );
+  //   AppColor.defaultMainColor =
+  //       temp == null ? AppColor.defaultMainColor : Color(temp);
+  // }
+
+  // getDefaultTextColor() async {
+  //   final temp = GetStorage().read(
+  //     'defaultTextColor',
+  //   );
+  //   AppColor.defaultTextColor =
+  //       temp == null ? AppColor.defaultTextColor : Color(temp);
+  // }
+
+  // getDefaultBgColor() async {
+  //   final temp = GetStorage().read(
+  //     'defaultBgColor',
+  //   );
+  //   AppColor.defaultBgColor =
+  //       temp == null ? AppColor.defaultBgColor : Color(temp);
+  // }
+
+  // getDefaultBlogLayout() async {
+  //   final temp = GetStorage().read(
+  //     'defaultBlogLayout',
+  //   );
+  //   AppSettings.blogLayoutIsListView = temp ?? AppSettings.blogLayoutIsListView;
+  // }
 
   logOut() async {
     AppSettings.userModal.isUserLoggedIn = false;

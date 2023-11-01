@@ -201,52 +201,76 @@ class _HomeScreenState extends State<HomeScreen> {
                 : GridView.builder(
                     shrinkWrap: true,
                     itemCount: _blogProvider.allBlogs.length,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: 1.25,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                        crossAxisCount: 2),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            childAspectRatio: 1.25,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
+                            crossAxisCount: 2),
                     itemBuilder: (context, index) {
                       final item = _blogProvider.allBlogs[index];
-                       final textColor = item.textColor == null
+                      final textColor = item.textColor == null
                           ? AppColor.defaultTextColor
                           : Color(item.textColor ?? 0);
                       return Container(
                         // height: 00,
 
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                        border: Border(bottom: BorderSide(width: 3,color: theme.primaryColor),left: BorderSide(width: 1,color: theme.primaryColor),right: BorderSide(width: 1,color: theme.primaryColor),top: BorderSide(width: 1,color: theme.primaryColor),)),
-                        child: Stack(
-                          children:[ Padding(
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border(
+                              bottom: BorderSide(
+                                  width: 3, color: theme.primaryColor),
+                              left: BorderSide(
+                                  width: 1, color: theme.primaryColor),
+                              right: BorderSide(
+                                  width: 1, color: theme.primaryColor),
+                              top: BorderSide(
+                                  width: 1, color: theme.primaryColor),
+                            )),
+                        child: Stack(children: [
+                          Padding(
                             padding: const EdgeInsets.all(10.0),
-                            child: Column(children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: (){
-                                    Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ViewBlogScreen(blog: item)));
-                                },
-                                child: Center(child: Icon(Icons.edit_document,color: Colors.grey,size: 50,),)),
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ViewBlogScreen(
+                                                        blog: item)));
+                                      },
+                                      child: Center(
+                                        child: Icon(
+                                          Icons.edit_document,
+                                          color: Colors.grey,
+                                          size: 50,
+                                        ),
+                                      )),
+                                ),
+                                Text(
+                                  item.title,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      color: textColor,
+                                      fontSize: 16),
+                                  maxLines: 2,
+                                ),
+                              ],
                             ),
-                             Text(item.title,style: TextStyle(fontWeight: FontWeight.w700,color: textColor,fontSize: 16),maxLines: 2,),
-                                                ],),
                           ),
-                                              
-                                        Positioned(
-                                          right: 0,
-                                          child: IconButton(onPressed: (){
-_blogProvider.deletBlog(index);
-                                          }, icon: Icon(Icons.delete_forever) ))
-                                               ]
-                        ) ,);
-                    }
-                      
-                        
-                  )
+                          Positioned(
+                              right: 0,
+                              child: IconButton(
+                                  onPressed: () {
+                                    _blogProvider.deletBlog(index);
+                                  },
+                                  icon: Icon(Icons.delete_forever)))
+                        ]),
+                      );
+                    })
           ],
         ),
       ),
@@ -261,17 +285,17 @@ _blogProvider.deletBlog(index);
           Container(
             height: MediaQuery.of(context).size.height * 0.1,
             decoration: BoxDecoration(
-              color: theme.primaryColor,
+              color: theme.canvasColor,
             ),
-            child: const Padding(
-              padding: EdgeInsets.all(16.0),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
                     'Personal Blog App',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: theme.primaryColor,
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
                   ),
@@ -290,8 +314,10 @@ _blogProvider.deletBlog(index);
               style: TextStyle(fontWeight: FontWeight.w600),
             ),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const AppSettingsScreen()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AppSettingsScreen()));
             },
           ),
           const Spacer(),

@@ -1,18 +1,50 @@
-
 import 'package:blog_assesment/businessLogics/providers/base_provider.dart';
 import 'package:flutter/material.dart';
 
-
-
-class AppColor  extends BaseProvider{
+class AppColor extends BaseProvider {
   static Color defaultMainColor = Color(0xff0C274F);
   static Color defaultTextColor = Colors.black;
-  static Color defaultBgColor =  Colors.white;
-   static Color rdefaultMainColor = Color(0xff0C274F);
+  static Color defaultBgColor = Colors.white;
+  static Color rdefaultMainColor = Color(0xff0C274F);
   static Color rdefaultTextColor = Colors.black;
-  static Color rdefaultBgColor =  Colors.white;
- static  getPrimarySwatchColor () {
-   return MaterialColor(
+  static Color rdefaultBgColor = Colors.white;
+  static bool isDarkTheme = true;
+  changeThemeToDarkMode() {
+    if (!isDarkTheme) {
+      defaultTextColor = Colors.white;
+      defaultBgColor = Colors.black;
+      isDarkTheme = true;
+    } else {
+      defaultTextColor = rdefaultTextColor;
+      isDarkTheme = false;
+    }
+    update();
+  }
+
+  updateDefaultMainColor(Color? color) {
+    if (color != null) {
+      defaultMainColor = color;
+    }
+    update();
+  }
+
+  updateDefaultTextColor(Color? color) {
+    if (color != null) {
+      defaultTextColor = color;
+    }
+    update();
+  }
+
+  updateDefaultBgColor(Color? color) {
+    if (color != null) {
+      defaultBgColor = color;
+    }
+    update();
+  }
+
+  static getPrimarySwatchColor() {
+    print("====================Color Value == ${defaultTextColor.value}");
+    return MaterialColor(
       defaultMainColor.value,
       <int, Color>{
         50: defaultMainColor,
@@ -29,9 +61,13 @@ class AppColor  extends BaseProvider{
     );
   }
 
- static  resetDefault(){
-     defaultMainColor = rdefaultMainColor;
-   defaultTextColor = rdefaultTextColor;
-   defaultBgColor = rdefaultBgColor;
+  static resetDefault() {
+    defaultMainColor = rdefaultMainColor;
+    defaultTextColor = rdefaultTextColor;
+    defaultBgColor = rdefaultBgColor;
+  }
+
+  update() {
+    notifyListeners();
   }
 }

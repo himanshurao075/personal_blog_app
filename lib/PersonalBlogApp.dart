@@ -37,11 +37,13 @@ class _PersonalBlogAppState extends State<PersonalBlogApp>
                 navigatorKey: navigatorKey,
                 builder: (BuildContext context, Widget? child) {
                   return MediaQuery(
-                    data: MediaQuery.of(context).copyWith( ),
+                    data: MediaQuery.of(context),
                     child: child!,
                   );
                 },
                 theme: AppTheme.getAppTheme(),
+                // darkTheme: AppTheme.getDartTheme(),
+                themeMode: AppTheme.getThemeMode(),
                 debugShowCheckedModeBanner: false,
                 home: const SplashScreen(),
                 

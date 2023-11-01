@@ -1,3 +1,4 @@
+import 'package:blog_assesment/res/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
@@ -18,6 +19,8 @@ class RegisterProviders {
         ChangeNotifierProvider<BlogProvider>(
           create: (context) => BlogProvider(),
         ),
-       
+        ChangeNotifierProvider<AppColor>(
+          create: (context) => AppColor(),
+        ),
       ];
 }

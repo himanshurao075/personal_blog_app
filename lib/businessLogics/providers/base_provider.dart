@@ -22,6 +22,7 @@ class BaseProvider extends ChangeNotifier {
 
   bool? checkNetwork;
   /* Function to check internet connection */
+  
   Future<bool> checkInternet() async {
      checkNetwork =  await NetworkConnection.instance.checkInternet();
      notifyListeners();

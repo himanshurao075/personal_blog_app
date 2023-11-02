@@ -3,6 +3,7 @@ import 'package:blog_assesment/PersonalBlogApp.dart';
 import 'package:blog_assesment/Screens/Home/new_blog_page.dart';
 import 'package:blog_assesment/businessLogics/providers/auth_provider.dart';
 import 'package:blog_assesment/businessLogics/providers/blog_provider.dart';
+import 'package:blog_assesment/data_layer/Storage/storage_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -66,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               AppSettings.blogLayoutIsListView =
                   !AppSettings.blogLayoutIsListView;
+              StorageHelper().setDefaultBlogLayout();
               setState(() {});
             },
             child: Icon(
@@ -336,6 +338,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 5,
                 ),
                 const Text("Version : 1.0.0"),
+                const SizedBox(
+                  height: 5,
+                ),
+                const Text(
+                  "Made by ❤️ with Widmungs",
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
               ],
             ),
           )

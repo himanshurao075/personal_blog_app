@@ -20,6 +20,11 @@ class StorageHelper {
     // box.initStorage;/
     getUserList();
     fetchUserLoggedIn();
+    getDefaultMainColor();
+    getDefaultTextColor();
+    getDefaultBgColor();
+    getDefaultBlogLayout();
+    getThemeMode();
   }
 
   Future<List<BlogModal>> saveBlogs(List<BlogModal> blogs) async {
@@ -71,59 +76,71 @@ class StorageHelper {
     AppSettings.userModal = UserModal.fromJson((temp ?? {}));
   }
 
-  // setDefaultMainColor() async {
-  //   await GetStorage()
-  //       .write('defaultMainColor', AppColor.defaultMainColor.value);
-  //   await getDefaultMainColor();
-  // }
+  setThemeMode() async {
+    await GetStorage().write('themeMode', AppColor.isDarkTheme);
+    await getThemeMode();
+  }
 
-  // setDefaultTextColor() async {
-  //   await GetStorage()
-  //       .write('defaultTextColor', AppColor.defaultTextColor.value);
-  //   await getDefaultTextColor();
-  // }
+  setDefaultMainColor() async {
+    await GetStorage()
+        .write('defaultMainColor', AppColor.defaultMainColor.value);
+    await getDefaultMainColor();
+  }
 
-  // setDefaultBgColor() async {
-  //   await GetStorage().write('defaultBgColor', AppColor.defaultBgColor.value);
-  //   await getDefaultBgColor();
-  // }
+  setDefaultTextColor() async {
+    await GetStorage()
+        .write('defaultTextColor', AppColor.defaultTextColor.value);
+    await getDefaultTextColor();
+  }
 
-  // setDefaultBlogLayout() async {
-  //   await GetStorage()
-  //       .write('defaultBlogLayout', AppSettings.blogLayoutIsListView);
-  //   await getDefaultMainColor();
-  // }
+  setDefaultBgColor() async {
+    await GetStorage().write('defaultBgColor', AppColor.defaultBgColor.value);
+    await getDefaultBgColor();
+  }
 
-  // getDefaultMainColor() async {
-  //   final temp = GetStorage().read(
-  //     'defaultMainColor',
-  //   );
-  //   AppColor.defaultMainColor =
-  //       temp == null ? AppColor.defaultMainColor : Color(temp);
-  // }
+  setDefaultBlogLayout() async {
+    await GetStorage()
+        .write('defaultBlogLayout', AppSettings.blogLayoutIsListView);
+    await getDefaultMainColor();
+  }
 
-  // getDefaultTextColor() async {
-  //   final temp = GetStorage().read(
-  //     'defaultTextColor',
-  //   );
-  //   AppColor.defaultTextColor =
-  //       temp == null ? AppColor.defaultTextColor : Color(temp);
-  // }
+  getThemeMode() async {
+    final temp = GetStorage().read(
+      'themeMode',
+    );
+    AppColor.isDarkTheme = temp ?? false;
+  }
 
-  // getDefaultBgColor() async {
-  //   final temp = GetStorage().read(
-  //     'defaultBgColor',
-  //   );
-  //   AppColor.defaultBgColor =
-  //       temp == null ? AppColor.defaultBgColor : Color(temp);
-  // }
+  getDefaultMainColor() async {
+    final temp = GetStorage().read(
+      'defaultMainColor',
+    );
+    AppColor.defaultMainColor =
+        temp == null ? AppColor.defaultMainColor : Color(temp);
+  }
 
-  // getDefaultBlogLayout() async {
-  //   final temp = GetStorage().read(
-  //     'defaultBlogLayout',
-  //   );
-  //   AppSettings.blogLayoutIsListView = temp ?? AppSettings.blogLayoutIsListView;
-  // }
+  getDefaultTextColor() async {
+    final temp = GetStorage().read(
+      'defaultTextColor',
+    );
+    AppColor.defaultTextColor =
+        temp == null ? AppColor.defaultTextColor : Color(temp);
+  }
+
+  getDefaultBgColor() async {
+    final temp = GetStorage().read(
+      'defaultBgColor',
+    );
+    AppColor.defaultBgColor =
+        temp == null ? AppColor.defaultBgColor : Color(temp);
+  }
+
+  getDefaultBlogLayout() async {
+    final temp = GetStorage().read(
+      'defaultBlogLayout',
+    );
+    AppSettings.blogLayoutIsListView = temp ?? AppSettings.blogLayoutIsListView;
+  }
 
   logOut() async {
     AppSettings.userModal.isUserLoggedIn = false;

@@ -34,6 +34,7 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
           IconButton(
               onPressed: () {
                 AppColor.resetDefault();
+
                 runApp(PersonalBlogApp());
               },
               icon: Text(
@@ -66,6 +67,7 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
                     onTap: () {
                       changeColorDialog((changedColor) {
                         appColorProvider.updateDefaultMainColor(changedColor);
+                        StorageHelper().setDefaultMainColor();
                         // AppColor.defaultMainColor =
                         //     changedColor ?? AppColor.defaultMainColor;
                         runApp(PersonalBlogApp());
@@ -93,6 +95,7 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
                   onTap: () {
                     changeColorDialog((changedColor) {
                       appColorProvider.updateDefaultTextColor(changedColor);
+                      StorageHelper().setDefaultTextColor();
 
                       // AppColor.defaultTextColor =
                       //     changedColor ?? AppColor.defaultTextColor;
@@ -120,6 +123,7 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
                   onTap: () {
                     changeColorDialog((changedColor) {
                       appColorProvider.updateDefaultBgColor(changedColor);
+                      StorageHelper().setDefaultBgColor();
 
                       // AppColor.defaultBgColor =
                       //     changedColor ?? AppColor.defaultBgColor;

@@ -1,4 +1,5 @@
 import 'package:blog_assesment/businessLogics/providers/base_provider.dart';
+import 'package:blog_assesment/data_layer/Storage/storage_helper.dart';
 import 'package:flutter/material.dart';
 
 class AppColor extends BaseProvider {
@@ -18,6 +19,10 @@ class AppColor extends BaseProvider {
       defaultTextColor = rdefaultTextColor;
       isDarkTheme = false;
     }
+
+    StorageHelper().setDefaultBgColor();
+    StorageHelper().setDefaultTextColor();
+    StorageHelper().setThemeMode();
     update();
   }
 
@@ -65,6 +70,11 @@ class AppColor extends BaseProvider {
     defaultMainColor = rdefaultMainColor;
     defaultTextColor = rdefaultTextColor;
     defaultBgColor = rdefaultBgColor;
+    StorageHelper().setDefaultBgColor();
+    StorageHelper().setDefaultBlogLayout();
+    StorageHelper().setDefaultMainColor();
+    StorageHelper().setDefaultTextColor();
+    StorageHelper().setThemeMode();
   }
 
   update() {
